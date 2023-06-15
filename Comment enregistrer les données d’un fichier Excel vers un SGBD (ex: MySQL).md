@@ -26,6 +26,10 @@
 
     df.fillna('', inplace=True) 
 
+> Formatter tous les champs de tyde date dans le fichier
+
+    df['DATE_ENREG']=df['DATE_ENREG'].apply(lambda x : x.strftime('%Y-%m-%d %H:%M:%S'))
+
 > Connection a la base de données
 
     try:
