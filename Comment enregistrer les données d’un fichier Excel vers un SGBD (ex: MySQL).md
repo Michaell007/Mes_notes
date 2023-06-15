@@ -45,13 +45,23 @@ Pour plus de fonctionnalités, il faudra consulter la doc de la librairie pandas
 
 > Exemple complet du code
 
-       try:
+    import pandas as pd
+    import warnings
+    import mysql.connector
+    warnings.filterwarnings('ignore')
+    
+    df = pd.read_excel(r"Extraction-users-departements.xlsx", sheet_name="DEPARTEMENTS")
+    df.head()
+    
+    df.fillna('', inplace=True)
+    
+    try:
         cnx = mysql.connector.connect(user='root', password='', host='localhost')
         cursor = cnx.cursor()
         print('connected')
     except Exception as e:
         print(f"Erreur : {e}")
-    
+        
     try:
         for i in df.iterrows():
             # print( type( i[1][10] ) )
